@@ -33,6 +33,14 @@ body {
   margin-right: .75rem;
   margin-left: .75rem;
 }
+
+.cover-display {
+opacity: 1;
+}
+
+.gameplay-display {
+opacity: 0;
+}
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 @media (min-width: 40em) {

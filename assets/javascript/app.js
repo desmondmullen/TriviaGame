@@ -1,8 +1,8 @@
 $(document).ready(function () {
     var theCounter = 0;
-    var theCorrect = 0;
-    var theWrong = 0;
-    var theNumberToWordConversion = ["one", "two", "three"]
+    var theCorrectAnswers = 0;
+    var theWrongAnswers = 0;
+    var theNumberToWordConversion = ["one", "two", "three", "four", "five"]
 
     var theQuestions = {
         one: {
@@ -26,6 +26,26 @@ $(document).ready(function () {
             wrongGetsResponse: "zoinks, it was blah blah"
         },
         three: {
+            heading: "one more question",
+            text: "one more question text",
+            answer1: "bogus answer 1",
+            answer2: "bogus answer 2",
+            answer3: "real answer 3",
+            correctAnswer: "button-3",
+            correctGetsResponse: "aww yissss!",
+            wrongGetsResponse: "der der der"
+        },
+        four: {
+            heading: "more questions?",
+            text: "Yes! more questions text",
+            answer1: "real answer 1",
+            answer2: "bogus answer 2",
+            answer3: "bogus answer 3",
+            correctAnswer: "button-1",
+            correctGetsResponse: "yeah, boi!",
+            wrongGetsResponse: "estupido!"
+        },
+        five: {
             heading: "the last question",
             text: "the last question's text",
             answer1: "bogus answer 1",
@@ -38,16 +58,39 @@ $(document).ready(function () {
     }
 
     $("button").on("click", function () {
-        if (this.id === theQuestions[theNumberToWordConversion[theCounter]].correctAnswer) {
-            alert(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse);
+        if (this.id === "start" || this.id === "again") {
+            $("#startscreen").attr({ "style": "display: none" });
+            $("#gameplay").attr({ "style": "display: initial" });
+            $("#roundend").attr({ "style": "display: none" });
+            $("#gameend").attr({ "style": "display: none" });
+            fillTheQuestionData()
         } else {
-            alert(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
-        };
-        theCounter++;
-        if (theCounter < Object.keys(theQuestions).length) {
-            fillTheQuestionData();
-        } else {
-            alert("the end!");
+            $("#gameplay").attr({ "style": "display: none" });
+            $("#roundend").attr({ "style": "display: initial" });
+            if (this.id === theQuestions[theNumberToWordConversion[theCounter]].correctAnswer) {
+                // console.log(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse);
+                $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse);
+                theCorrectAnswers++;
+            } else {
+                // console.log(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
+                $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
+                theWrongAnswers++;
+            };
+            setTimeout(function () {
+                $("#gameplay").attr({ "style": "display: initial" });
+                $("#roundend").attr({ "style": "display: none" });
+                fillTheQuestionData()
+            }, 2000);
+            theCounter++;
+            if (theCounter < Object.keys(theQuestions).length) {
+                fillTheQuestionData();
+            } else {
+                $("#startscreen").attr({ "style": "display: none" });
+                $("#gameplay").attr({ "style": "display: none" });
+                $("#roundend").attr({ "style": "display: none" });
+                $("#gameend").attr({ "style": "display: initial" });
+                $("#gameend-display").text("The end! You got " + theCorrectAnswers + " correct and " + theWrongAnswers + " wrong.");
+            }
         }
     });
 
@@ -64,6 +107,14 @@ $(document).ready(function () {
         let theIndicatorString = "#indicator-" + theCounter;
         $(theIndicatorString).attr({ class: "active" });
     }
-    fillTheQuestionData()
+
+    function initializeGame() {
+        $("#startscreen").attr({ "style": "display: initial" });
+        $("#gameplay").attr({ "style": "display: none" });
+        $("#roundend").attr({ "style": "display: none" });
+        $("#gameend").attr({ "style": "display: none" });
+    };
+
+    initializeGame()
 });
 
