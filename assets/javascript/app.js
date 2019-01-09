@@ -76,20 +76,26 @@ $(document).ready(function () {
                 $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
                 theWrongAnswers++;
             };
-            setTimeout(function () {
-                $("#gameplay").attr({ "style": "display: initial" });
-                $("#roundend").attr({ "style": "display: none" });
-                fillTheQuestionData()
-            }, 2000);
+            // setTimeout(function () {
+            //     $("#gameplay").attr({ "style": "display: initial" });
+            //     $("#roundend").attr({ "style": "display: none" });
+            //     fillTheQuestionData()
+            // }, 2000);
             theCounter++;
             if (theCounter < Object.keys(theQuestions).length) {
-                fillTheQuestionData();
+                setTimeout(function () {
+                    $("#gameplay").attr({ "style": "display: initial" });
+                    $("#roundend").attr({ "style": "display: none" });
+                    fillTheQuestionData()
+                }, 1500);
             } else {
-                $("#startscreen").attr({ "style": "display: none" });
-                $("#gameplay").attr({ "style": "display: none" });
-                $("#roundend").attr({ "style": "display: none" });
-                $("#gameend").attr({ "style": "display: initial" });
-                $("#gameend-display").text("The end! You got " + theCorrectAnswers + " correct and " + theWrongAnswers + " wrong.");
+                setTimeout(function () {
+                    $("#startscreen").attr({ "style": "display: none" });
+                    $("#gameplay").attr({ "style": "display: none" });
+                    $("#roundend").attr({ "style": "display: none" });
+                    $("#gameend").attr({ "style": "display: initial" });
+                    $("#gameend-display").text("The end! You got " + theCorrectAnswers + " correct and " + theWrongAnswers + " wrong.");
+                }, 1000);
             }
         }
     });

@@ -1,14 +1,20 @@
 body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
   color: #5a5a5a;
+}
+#gameplay {
+  z-index: 99;
+}
+.cover-container {
+margin-top: 25vh;
 }
 .carousel {
   margin-bottom: 4rem;
 }
 .carousel-caption {
   bottom: 3rem;
-  z-index: 10;
+  z-index: 999;
 }
 
 /* Declare heights because of positioning of img element */
