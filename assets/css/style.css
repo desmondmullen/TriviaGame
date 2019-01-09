@@ -6,15 +6,30 @@ body {
 #gameplay {
   z-index: 99;
 }
+
+#countdown-timer {
+  font-size: xx-large;
+  font-weight: bold;
+  color: red;
+  margin: 0 auto;
+  text-align: center;
+}
+#question-heading {
+  z-index: 999;
+}
 .cover-container {
 margin-top: 25vh;
 }
 .carousel {
   margin-bottom: 4rem;
 }
+.carousel-heading {
+}
+.carousel-text {
+}
 .carousel-caption {
-  bottom: 3rem;
   z-index: 999;
+  bottom: 4rem;
 }
 
 /* Declare heights because of positioning of img element */
