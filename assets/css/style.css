@@ -73,7 +73,6 @@ span { /*progress indicators*/
   font-size: xx-large;
   color:blue;
   opacity: 1;
-  margin: 0 auto;
 }
 
 .carousel {
@@ -123,7 +122,7 @@ span { /*progress indicators*/
 
 @media only screen and (max-width: 670px) {
   #gameend-display, .robo-response {
-    width: 90vw;
+    width: 95vw;
   }
   .robo-response {
     font-size: x-large;
