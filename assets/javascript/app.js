@@ -23,7 +23,7 @@ $(document).ready(function () {
             correctAnswer: "button-3",
             correctGetsResponse: "yay, you did it",
             wrongGetsResponse: "mwah mwah, it was such-and-such",
-            questionImage: ""
+            questionImage: "assets/images/DR650.png"
         },
         two: {
             questionText: "another question's text",
@@ -33,7 +33,7 @@ $(document).ready(function () {
             correctAnswer: "button-1",
             correctGetsResponse: "woot, awesome!",
             wrongGetsResponse: "zoinks, it was blah blah",
-            questionImage: ""
+            questionImage: "assets/images/DR650.png"
         },
         three: {
             questionText: "one more question text",
@@ -131,9 +131,9 @@ $(document).ready(function () {
     }
 
     function fillTheQuestionData() {
-        let theString = "<img src=\"" + theQuestions[theNumberToWordConversion[theCounter]].questionImage + "\" style=\"position: absolute; top: -60px; left: -700px;\"\>";
-        $(".carousel-caption").prepend(theString);
-        $("img").animate({ "left": 700 }, 1500);
+        let theString = "<img src=\"" + theQuestions[theNumberToWordConversion[theCounter]].questionImage + "\" style=\"position: absolute; left: -100vw\"\>";
+        $(".carousel-item").prepend(theString);
+        $("img").animate({ "left": "70vw" }, 4000);
         $("#question-text").text(theQuestions[theNumberToWordConversion[theCounter]].questionText);
         $("#button-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1);
         $("#button-2").text(theQuestions[theNumberToWordConversion[theCounter]].answer2);

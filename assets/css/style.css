@@ -39,7 +39,7 @@ span { /*progress indicators*/
 #question-text {
   font-family: 'Special Elite', cursive;
   font-size: xx-large;
-  z-index: 999;
+  z-index: 99;
 }
 
 .cover-heading {
@@ -69,7 +69,7 @@ span { /*progress indicators*/
   padding-top: 6rem;
   color: #fff;
   text-align: center;
-  z-index: 999;
+  z-index: 99;
 }
 
 /* Declare heights because of positioning of img element */
@@ -82,6 +82,7 @@ span { /*progress indicators*/
 .carousel-item > img {
   height: 100%;
   padding-bottom: 2rem;
+  z-index: 999;
 }
 
 .carousel-inner {
