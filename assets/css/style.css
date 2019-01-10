@@ -3,6 +3,26 @@ body {
   padding-bottom: 3vh;
   color: #5a5a5a;
 }
+
+#indicators {
+  margin-top: 4rem;
+}
+
+span { /*progress indicators*/
+  opacity: .25;
+  margin: 0 .5rem;
+  z-index: 99;
+}
+
+.btn, .btn-secondary {
+  font-size: x-large;
+  margin-top: 7vh;
+}
+
+.active {
+  opacity: 1;
+}
+
 #gameplay {
   z-index: 99;
 }
@@ -10,64 +30,128 @@ body {
 #countdown-timer {
   font-size: xx-large;
   font-weight: bold;
+  font-style: italic;
   color: red;
-  margin: 0 auto;
+  margin: 2rem 0 4rem 0 ;
   text-align: center;
 }
-#question-heading {
+
+#question-text {
+  font-family: 'Special Elite', cursive;
+  font-size: xx-large;
   z-index: 999;
 }
-.cover-container {
-margin-top: 25vh;
+
+.cover-heading {
+  font-family: 'Faster One', Arial, Helvetica, sans-serif;
+  font-size: 70px;
+  margin: 10vh;
 }
+
+#gameend-display, .robo-response {
+  margin: 0 auto;
+  width: 50vw;
+}
+
+.robo-response {
+  font-family: 'Special Elite', cursive;
+  font-size: xx-large;
+  color:blue;
+  opacity: 1;
+  margin: 0 auto;
+}
+
 .carousel {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
-.carousel-heading {
-}
-.carousel-text {
-}
-.carousel-caption {
+
+.question-display {
+  padding-top: 6rem;
+  color: #fff;
+  text-align: center;
   z-index: 999;
-  bottom: 4rem;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-  height: 20rem;
+  height: 15rem;
   text-align: center;
   background-color: darkslategray;
 }
+
 .carousel-item > img {
   height: 100%;
   padding-bottom: 2rem;
+}
+
+.carousel-inner {
+  margin-top: 3rem;
 }
 
 .answers .col-md-4 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
-.answers h2 {
-  font-weight: 400;
-}
-.answers .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
-}
 
 .cover-display {
-opacity: 1;
+  opacity: 1;
 }
 
 .gameplay-display {
-opacity: 0;
+  opacity: 0;
 }
-/* RESPONSIVE CSS
--------------------------------------------------- */
-@media (min-width: 40em) {
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 1.25rem;
-    font-size: 1.25rem;
-    line-height: 1.4;
+
+@-ms-viewport{
+  width: device-width;
+}
+
+@media only screen and (max-width: 670px) {
+  #gameend-display, .robo-response {
+    width: 90vw;
   }
+  .robo-response {
+    font-size: x-large;
+  }
+  .cover-heading {
+    font-size: xx-large;
+    margin: 3vh;
+  }
+  #question-text {
+    font-size: x-large;
+  }
+
+
+  .btn, .btn-secondary {
+    font-size: large;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  #countdown-timer {
+    font-size: x-large;
+    margin: 0;
+  }
+  .carousel {
+    margin-bottom: 0.5rem;
+  }
+  .answers .col-md-4 {
+    margin-bottom: 0.5rem;
+  }
+  .carousel-inner {
+    margin-top: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {/*really small margins for better layout on mobile in portrait*/
+  .robo-response {
+    font-size: large;
+  }
+  .cover-heading {
+    font-size: x-large;
+  }
+  .btn, .btn-secondary {
+    font-size: medium;
+  }
+  #countdown-timer {
+    font-size: large;
+  }
+}

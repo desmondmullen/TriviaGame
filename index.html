@@ -10,72 +10,62 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Faster+One|Special+Elite" rel="stylesheet">
 </head>
 
 <body>
     <div id="startscreen" class="text-center">
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-            <main role="main" class="inner cover">
-                <h1 class="cover-heading">Trivia!</h1>
-                <p class="lead">text</p>
-                <button id="start" class="btn btn-md btn-secondary">Let's Play</button>
-            </main>
+        <div class="cover-container">
+            <h1 class="cover-heading">Acme Trivi-o-Matic 5000&reg;</h1>
+            <p class="robo-response">Puny carbon unit, I challenge you to test your wits
+                against the miracle robot brain of me, the Trivi-o-Matic 5000&reg;!</p>
+            <button id="start" class="btn btn-secondary">Let's Play</button>
         </div>
     </div>
     <div id="gameplay">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li id="indicator-0" data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li id="indicator-1" data-target="#myCarousel" data-slide-to="1"></li>
-                <li id="indicator-2" data-target="#myCarousel" data-slide-to="2"></li>
-                <li id="indicator-3" data-target="#myCarousel" data-slide-to="3"></li>
-                <li id="indicator-4" data-target="#myCarousel" data-slide-to="4"></li>
-            </ol>
+        <div class="carousel">
             <div id="countdown-timer">&nbsp;</div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="carousel-caption">
-                        <h1 id="question-heading" class="carousel-heading"></h1>
-                        <p id="question-text" class="carousel-text"></p>
+                    <div class="question-display">
+                        <h1 id="question-text" class="carousel-text"></h1>
+                        <div id="indicators">
+                            <span id="indicator-0" class="active">&bull;</span>
+                            <span id="indicator-1">&bull;</span>
+                            <span id="indicator-2">&bull;</span>
+                            <span id="indicator-3">&bull;</span>
+                            <span id="indicator-4">&bull;</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <p class="robo-response text-center">What is your puny answer, carbon unit?</p>
         <div class="container answers">
             <div class="row">
                 <div class="col-md-4">
-                    <h2 id="heading-1">Heading</h2>
-                    <p id="answer-1">This is the first answer</p>
-                    <button id="button-1" class="btn btn-secondary">This is the Answer</button>
+                    <button id="button-1" class="btn btn-secondary"></button>
                 </div>
                 <div class="col-md-4">
-                    <h2 id="heading-2">Heading</h2>
-                    <p id="answer-2">This is the second answer</p>
-                    <button id="button-2" class="btn btn-secondary">This is the Answer</button>
+                    <button id="button-2" class="btn btn-secondary"></button>
                 </div>
                 <div class="col-md-4">
-                    <h2 id="heading-3">Heading</h2>
-                    <p id="answer-3">This is the third answer</p>
-                    <button id="button-3" class="btn btn-secondary">This is the Answer</button>
+                    <button id="button-3" class="btn btn-secondary"></button>
                 </div>
             </div>
         </div>
     </div>
     <div id="roundend" class="text-center">
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-            <main role="main" class="inner cover">
-                <h1 class="cover-heading">Trivia!</h1>
-                <p id="roundend-display" class="lead"></p>
-            </main>
+        <div class="cover-container">
+            <h1 class="cover-heading">Acme Trivi-o-Matic 5000&reg;</h1>
+            <p id="roundend-display" class="robo-response"></p>
         </div>
     </div>
     <div id="gameend" class="text-center">
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-            <main role="main" class="inner cover">
-                <h1 class="cover-heading">Trivia!</h1>
-                <p id="gameend-display" class="lead"></p>
-                <button id="again" class="btn btn-md btn-secondary">Play Again!</button>
-            </main>
+        <div class="cover-container">
+            <h1 class="cover-heading">Acme Trivi-o-Matic 5000&reg;</h1>
+            <p id="gameend-display" class="robo-response"></p>
+            <button id="again" class="btn btn-md btn-secondary">Play Again!</button>
         </div>
     </div>
 

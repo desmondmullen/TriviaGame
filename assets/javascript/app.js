@@ -16,7 +16,6 @@ $(document).ready(function () {
 
     var theQuestions = {
         one: {
-            questionHeading: "a question",
             questionText: "a question's text",
             answer1: "bogus answer 1",
             answer2: "bogus answer 2",
@@ -27,7 +26,6 @@ $(document).ready(function () {
             questionImage: ""
         },
         two: {
-            questionHeading: "another question",
             questionText: "another question's text",
             answer1: "real answer 1",
             answer2: "bogus answer 2",
@@ -38,7 +36,6 @@ $(document).ready(function () {
             questionImage: ""
         },
         three: {
-            questionHeading: "one more question",
             questionText: "one more question text",
             answer1: "bogus answer 1",
             answer2: "bogus answer 2",
@@ -49,7 +46,6 @@ $(document).ready(function () {
             questionImage: "assets/images/DR650.png"
         },
         four: {
-            questionHeading: "more questions?",
             questionText: "Yes! more questions text",
             answer1: "real answer 1",
             answer2: "bogus answer 2",
@@ -60,7 +56,6 @@ $(document).ready(function () {
             questionImage: ""
         },
         five: {
-            questionHeading: "the last question",
             questionText: "the last question's text",
             answer1: "bogus answer 1",
             answer2: "real answer 2",
@@ -78,6 +73,7 @@ $(document).ready(function () {
         theCountdownTime = 0;
         if (this.id === "start" || this.id === "again") {
             resetVariables();
+            $("span").removeClass("active");
             $("#startscreen").attr({ "style": "display: none" });
             $("#gameplay").attr({ "style": "display: initial" });
             $("#roundend").attr({ "style": "display: none" });
@@ -86,7 +82,7 @@ $(document).ready(function () {
             setCountDownTimer();
         } else {
             if (this.id === theQuestions[theNumberToWordConversion[theCounter]].correctAnswer) {
-                $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse);
+                $("#roundend-display").html(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse + "<br><br>(The Trivi-o-Matic 5000&reg; is impressed. You must be cheating.)");
                 theCorrectAnswers++;
                 finishTheRound()
             } else {
@@ -96,7 +92,7 @@ $(document).ready(function () {
     });
 
     function handleWrongAnswerOrTimeout() {
-        $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
+        $("#roundend-display").html(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse + "<br><br>(The Trivi-o-Matic 5000&reg; is not impressed by your shenanigans.)");
         theWrongAnswers++;
         finishTheRound()
     }
@@ -113,15 +109,24 @@ $(document).ready(function () {
                 $("#roundend").attr({ "style": "display: none" });
                 fillTheQuestionData()
                 setCountDownTimer();
-            }, 1500);
+            }, 3500);
         } else {
             setTimeout(function () {
                 $("#startscreen").attr({ "style": "display: none" });
                 $("#gameplay").attr({ "style": "display: none" });
                 $("#roundend").attr({ "style": "display: none" });
                 $("#gameend").attr({ "style": "display: initial" });
-                $("#gameend-display").text("The end! You got " + theCorrectAnswers + " correct and " + theWrongAnswers + " wrong.");
-            }, 500);
+                if (theCorrectAnswers === theCounter) {
+                    var theMessage = "You got every answer correct.<br><br>You have beaten the Trivi-o-Matic 5000&reg;!";
+                } else {
+                    if (theCorrectAnswers > theWrongAnswers) {
+                        var theMessage = "You got " + theCorrectAnswers + " out of " + theCounter + " correct.<br><br>That's better than most monkeys.";
+                    } else {
+                        var theMessage = "You got " + theCorrectAnswers + " out of " + theCounter + " correct.<br><br>Were you out that one day they taught everything at school?";
+                    }
+                }
+                $("#gameend-display").html(theMessage);
+            }, 3500);
         }
     }
 
@@ -129,15 +134,10 @@ $(document).ready(function () {
         let theString = "<img src=\"" + theQuestions[theNumberToWordConversion[theCounter]].questionImage + "\" style=\"position: absolute; top: -60px; left: -700px;\"\>";
         $(".carousel-caption").prepend(theString);
         $("img").animate({ "left": 700 }, 1500);
-        $("#question-heading").text(theQuestions[theNumberToWordConversion[theCounter]].questionHeading);
         $("#question-text").text(theQuestions[theNumberToWordConversion[theCounter]].questionText);
-        $("#heading-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1); // TODO: do headings?
-        $("#answer-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1);
-        $("#heading-2").text(theQuestions[theNumberToWordConversion[theCounter]].answer2); // TODO: do headings?
-        $("#answer-2").text(theQuestions[theNumberToWordConversion[theCounter]].answer2);
-        $("#heading-3").text(theQuestions[theNumberToWordConversion[theCounter]].answer3); // TODO: do headings?
-        $("#answer-3").text(theQuestions[theNumberToWordConversion[theCounter]].answer3);
-        $("li").removeClass("active");
+        $("#button-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1);
+        $("#button-2").text(theQuestions[theNumberToWordConversion[theCounter]].answer2);
+        $("#button-3").text(theQuestions[theNumberToWordConversion[theCounter]].answer3);
         let theIndicatorString = "#indicator-" + theCounter;
         $(theIndicatorString).attr({ class: "active" });
     }
