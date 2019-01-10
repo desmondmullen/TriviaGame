@@ -115,15 +115,13 @@ span { /*progress indicators*/
   .robo-response {
     font-size: x-large;
   }
+  #question-text {
+    font-size: x-large;
+  }
   .cover-heading {
     font-size: xx-large;
     margin: 3vh;
   }
-  #question-text {
-    font-size: x-large;
-  }
-
-
   .btn, .btn-secondary {
     font-size: large;
     margin-top: 0.5rem;
@@ -146,6 +144,9 @@ span { /*progress indicators*/
 
 @media only screen and (max-width: 400px) {/*really small margins for better layout on mobile in portrait*/
   .robo-response {
+    font-size: large;
+  }
+  #question-text {
     font-size: large;
   }
   .cover-heading {
