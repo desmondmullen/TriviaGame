@@ -4,8 +4,21 @@ body {
   color: #5a5a5a;
 }
 
+.question-display {
+  position: absolute;
+  left: 50%;
+}
+
+#question-text {
+  position: relative;
+  top: 1rem;
+  left: -50%;
+}
+
 #indicators {
-  margin-top: 3rem;
+  position: relative;
+  /* bottom: .25rem; */
+  left: -50%;
 }
 
 span { /*progress indicators*/
@@ -40,7 +53,7 @@ span { /*progress indicators*/
   font-family: 'Special Elite', cursive;
   font-size: xx-large;
   z-index: 99;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -52,7 +65,7 @@ span { /*progress indicators*/
 
 #gameend-display, .robo-response {
   margin: 0 auto;
-  width: 50vw;
+  width: 80vw;
 }
 
 .robo-response {
@@ -68,7 +81,7 @@ span { /*progress indicators*/
 }
 
 .question-display {
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
   color: #fff;
   text-align: center;
   z-index: 99;
