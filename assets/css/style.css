@@ -1,24 +1,46 @@
-body {
-  padding-top: 3vh;
-  padding-bottom: 3vh;
-  color: #5a5a5a;
+#countdown-timer {
+  font-size: xx-large;
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+  margin: 2rem 0 3rem 0 ;
+  text-align: center;
+}
+
+/* Declare heights because of positioning of img element */
+.question-background {
+  height: 15rem;
+  text-align: center;
+  background-color: darkslategray;
+}
+
+.question-background > img {
+  height: 100%;
+  padding-bottom: 2rem;
+  z-index: 9;
 }
 
 .question-display {
   position: absolute;
-  left: 50%;
+  color: #fff;
+  text-align: center;
+  left: 20%;
+  z-index: 99;
 }
 
 #question-text {
   position: relative;
+  font-family: 'Special Elite', cursive;
+  font-size: xx-large;
+  z-index: 99;
+  left: -12.5%;
   top: 1rem;
-  left: -50%;
 }
 
 #indicators {
   position: relative;
-  /* bottom: .25rem; */
-  left: -50%;
+  top: 13rem;
+  left: -12.5%;
 }
 
 span { /*progress indicators*/
@@ -27,40 +49,17 @@ span { /*progress indicators*/
   z-index: 99;
 }
 
+.active {
+  opacity: 1;
+}
+
 .btn, .btn-secondary {
   font-size: x-large;
   margin-top: 7vh;
 }
 
-.active {
-  opacity: 1;
-}
-
 #gameplay {
   z-index: 99;
-}
-
-#countdown-timer {
-  font-size: xx-large;
-  font-weight: bold;
-  font-style: italic;
-  color: red;
-  margin: 2rem 0 4rem 0 ;
-  text-align: center;
-}
-
-#question-text {
-  font-family: 'Special Elite', cursive;
-  font-size: xx-large;
-  z-index: 99;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.cover-heading {
-  font-family: 'Faster One', Arial, Helvetica, sans-serif;
-  font-size: 70px;
-  margin: 10vh;
 }
 
 #gameend-display, .robo-response {
@@ -75,37 +74,15 @@ span { /*progress indicators*/
   opacity: 1;
 }
 
-.carousel {
-  margin-bottom: 2rem;
-}
-
-.question-display {
-  /* padding-top: 3rem; */
-  color: #fff;
-  text-align: center;
-  z-index: 99;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel-item {
-  height: 15rem;
-  text-align: center;
-  background-color: darkslategray;
-}
-
-.carousel-item > img {
-  height: 100%;
-  padding-bottom: 2rem;
-  z-index: 9;
-}
-
-.carousel-inner {
-  margin-top: 3rem;
-}
-
 .answers .col-md-4 {
   margin-bottom: 1.5rem;
   text-align: center;
+}
+
+.cover-heading {
+  font-family: 'Faster One', Arial, Helvetica, sans-serif;
+  font-size: 70px;
+  margin: 10vh;
 }
 
 .cover-display {
@@ -120,45 +97,51 @@ span { /*progress indicators*/
   width: device-width;
 }
 
-@media only screen and (max-width: 670px) {
-  #gameend-display, .robo-response {
-    width: 95vw;
+@media only screen and (max-width: 900px) {
+  #countdown-timer {
+    font-size: x-large;
+    margin: 0;
+  }
+  .question-background {
+    height: 10rem;
+  }
+  #indicators {
+    top: 8rem;
+  }
+  .carousel-inner {
+    margin-top: 0.5rem;
   }
   .robo-response {
     font-size: x-large;
   }
   #question-text {
+    top: 0.25rem;
     font-size: x-large;
   }
-  .cover-heading {
-    font-size: xx-large;
-    margin: 3vh;
+  .answers .col-md-4 {
+    margin-bottom: 0.5rem;
   }
   .btn, .btn-secondary {
     font-size: large;
     margin-top: 0.5rem;
     margin-bottom: 0;
   }
-  #countdown-timer {
-    font-size: x-large;
-    margin: 0;
+  .cover-heading {
+    font-size: xx-large;
+    margin: 3vh;
   }
-  .carousel {
-    margin-bottom: 0.5rem;
-  }
-  .answers .col-md-4 {
-    margin-bottom: 0.5rem;
-  }
-  .carousel-inner {
-    margin-top: 0.5rem;
+  #gameend-display, .robo-response {
+    margin-top: .5rem;
+    width: 95vw;
   }
 }
 
-@media only screen and (max-width: 400px) {/*really small margins for better layout on mobile in portrait*/
+@media only screen and (max-width: 800px) {/*really small margins for better layout on mobile in portrait*/
   .robo-response {
     font-size: large;
   }
   #question-text {
+    top: 0rem;
     font-size: large;
   }
   .cover-heading {
