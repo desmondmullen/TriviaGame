@@ -5,7 +5,7 @@ body {
 }
 
 #indicators {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 span { /*progress indicators*/
@@ -40,6 +40,8 @@ span { /*progress indicators*/
   font-family: 'Special Elite', cursive;
   font-size: xx-large;
   z-index: 99;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .cover-heading {
@@ -66,7 +68,7 @@ span { /*progress indicators*/
 }
 
 .question-display {
-  padding-top: 6rem;
+  padding-top: 3rem;
   color: #fff;
   text-align: center;
   z-index: 99;
@@ -82,7 +84,7 @@ span { /*progress indicators*/
 .carousel-item > img {
   height: 100%;
   padding-bottom: 2rem;
-  z-index: 999;
+  z-index: 9;
 }
 
 .carousel-inner {

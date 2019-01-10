@@ -16,54 +16,54 @@ $(document).ready(function () {
 
     var theQuestions = {
         one: {
-            questionText: "a question's text",
-            answer1: "bogus answer 1",
-            answer2: "bogus answer 2",
-            answer3: "real answer 3",
-            correctAnswer: "button-3",
-            correctGetsResponse: "yay, you did it",
-            wrongGetsResponse: "mwah mwah, it was such-and-such",
-            questionImage: "assets/images/DR650.png"
+            questionText: "Today, Honda Motor Company makes cars, motorcycles, and power equipment such as generators. Which did it produce first?",
+            answer1: "cars",
+            answer2: "motorcycles",
+            answer3: "power equipment",
+            correctAnswer: "button-2",
+            correctGetsResponse: "That's correct!",
+            wrongGetsResponse: "A lousy guess! It was motorcycles.",
+            questionImage: ""
         },
         two: {
-            questionText: "another question's text",
-            answer1: "real answer 1",
-            answer2: "bogus answer 2",
-            answer3: "bogus answer 3",
+            questionText: "Similar to Honda, Suzuki Motor Corporation makes cars, motorcycles and power equipment. What made its founder, Michio Suzuki, famous first?",
+            answer1: "weaving looms",
+            answer2: "garden tillers",
+            answer3: "concrete mixers",
             correctAnswer: "button-1",
-            correctGetsResponse: "woot, awesome!",
-            wrongGetsResponse: "zoinks, it was blah blah",
-            questionImage: "assets/images/DR650.png"
+            correctGetsResponse: "How did you know that?!",
+            wrongGetsResponse: "No siree, it was weaving looms",
+            questionImage: ""
         },
         three: {
-            questionText: "one more question text",
-            answer1: "bogus answer 1",
-            answer2: "bogus answer 2",
-            answer3: "real answer 3",
-            correctAnswer: "button-3",
-            correctGetsResponse: "aww yissss!",
-            wrongGetsResponse: "der der der",
-            questionImage: "assets/images/DR650.png"
+            questionText: "The logo to be found on a Yamaha motorcycle consists of three tuning forks. This is because Yamaha Corporation originally did what?",
+            answer1: "fine-tuned car engines",
+            answer2: "produced pianos",
+            answer3: "invented electric tuners",
+            correctAnswer: "button-2",
+            correctGetsResponse: "Aww yissss!",
+            wrongGetsResponse: "Derp derp derp. Yamaha made pianos and reed organs long before it made motorcycles.",
+            questionImage: ""
         },
         four: {
-            questionText: "Yes! more questions text",
-            answer1: "real answer 1",
-            answer2: "bogus answer 2",
-            answer3: "bogus answer 3",
-            correctAnswer: "button-1",
-            correctGetsResponse: "yeah, boi!",
-            wrongGetsResponse: "estupido!",
+            questionText: "Honda is the world's largest manufacturer of what?",
+            answer1: "motorcycles",
+            answer2: "internal combustion engines",
+            answer3: "motorcycles and engines",
+            correctAnswer: "button-3",
+            correctGetsResponse: "Yeah, boi!",
+            wrongGetsResponse: "Estupido! They're the largest manufacturers of both motorcycles and internal combustion engines.",
             questionImage: ""
         },
         five: {
-            questionText: "the last question's text",
-            answer1: "bogus answer 1",
-            answer2: "real answer 2",
-            answer3: "bogus answer 3",
+            questionText: "Which company produced a car before the other company did?",
+            answer1: "Honda",
+            answer2: "Suzuki",
+            answer3: "They tied",
             correctAnswer: "button-2",
-            correctGetsResponse: "boo-yeah!",
-            wrongGetsResponse: "ai chihuahua! wrong-o, pal",
-            questionImage: ""
+            correctGetsResponse: "Boo-yeah! Suzuki's first came in 1955, Honda in 1963.",
+            wrongGetsResponse: "Ai chihuahua! Wrong-o, pal. Suzuki's first came in 1955, Honda in 1963.",
+            questionImage: "assets/images/DR650.png"
         },
     }
 
@@ -109,7 +109,7 @@ $(document).ready(function () {
                 $("#roundend").attr({ "style": "display: none" });
                 fillTheQuestionData()
                 setCountDownTimer();
-            }, 3500);
+            }, ($(".robo-response").text().length * 10) + 500);
         } else {
             setTimeout(function () {
                 $("#startscreen").attr({ "style": "display: none" });
@@ -133,7 +133,7 @@ $(document).ready(function () {
     function fillTheQuestionData() {
         let theString = "<img src=\"" + theQuestions[theNumberToWordConversion[theCounter]].questionImage + "\" style=\"position: absolute; left: -100vw\"\>";
         $(".carousel-item").prepend(theString);
-        $("img").animate({ "left": "70vw" }, 4000);
+        $("img").animate({ "left": "100vw" }, 4000);
         $("#question-text").text(theQuestions[theNumberToWordConversion[theCounter]].questionText);
         $("#button-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1);
         $("#button-2").text(theQuestions[theNumberToWordConversion[theCounter]].answer2);
@@ -143,19 +143,22 @@ $(document).ready(function () {
     }
 
     function setCountDownTimer() {
-        theCountdownTime = new Date().getTime() + 6000;
-        // Update the count down every 1 second
-        theCountdownInterval = setInterval(function () {
-            // Find the distance between now and the countdown time
-            var distance = theCountdownTime - new Date().getTime();
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            $("#countdown-timer").text("Countdown Timer: " + seconds);
-            if (distance < 0) {
-                clearInterval(theCountdownInterval);
-                $("#countdown-timer").text("Time's up!");
-                handleWrongAnswerOrTimeout();
-            }
-        }, 100);
+        console.log(($(".robo-response").text().length * 10) + 500);
+        setTimeout(function () {
+            theCountdownTime = new Date().getTime() + 16000;
+            // Update the count down every 1 second
+            theCountdownInterval = setInterval(function () {
+                // Find the distance between now and the countdown time
+                var distance = theCountdownTime - new Date().getTime();
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                $("#countdown-timer").text("Countdown Timer: " + seconds);
+                if (distance < 0) {
+                    clearInterval(theCountdownInterval);
+                    $("#countdown-timer").text("Time's up!");
+                    handleWrongAnswerOrTimeout();
+                }
+            }, 100);
+        }, ($(".robo-response").text().length * 7)); //this gives a little extra time for a long question
     };
 
     function initializeGame() {
