@@ -146,10 +146,10 @@ span { /*progress indicators*/
 
 @media only screen and (max-width: 600px) {/*really small margins for better layout on mobile in portrait*/
   .question-background {
-    height: 14rem;
+    height: 13.5rem;
   }
   #indicators {
-    top: 12rem;
+    top: 11.5rem;
   }
   .robo-response {
     font-size: large;
@@ -163,6 +163,7 @@ span { /*progress indicators*/
   }
   .btn, .btn-secondary {
     font-size: medium;
+    margin-top: 0.25rem;
   }
   #countdown-timer {
     font-size: large;
