@@ -137,6 +137,20 @@ span { /*progress indicators*/
 }
 
 @media only screen and (max-width: 800px) {/*really small margins for better layout on mobile in portrait*/
+  .question-background {
+    height: 12rem;
+  }
+  #indicators {
+    top: 10rem;
+  }
+
+@media only screen and (max-width: 600px) {/*really small margins for better layout on mobile in portrait*/
+  .question-background {
+    height: 14rem;
+  }
+  #indicators {
+    top: 12rem;
+  }
   .robo-response {
     font-size: large;
   }
