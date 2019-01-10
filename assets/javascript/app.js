@@ -73,6 +73,9 @@ $(document).ready(function () {
     }
 
     $("button").on("click", function () {
+        $("#countdown-timer").html("&nbsp;");
+        clearInterval(theCountdownInterval);
+        theCountdownTime = 0;
         if (this.id === "start" || this.id === "again") {
             resetVariables();
             $("#startscreen").attr({ "style": "display: none" });
@@ -80,45 +83,54 @@ $(document).ready(function () {
             $("#roundend").attr({ "style": "display: none" });
             $("#gameend").attr({ "style": "display: none" });
             fillTheQuestionData()
+            setCountDownTimer();
         } else {
-            $("img").remove();
-            $("#countdown-timer").html("&nbsp;");
-            $("#gameplay").attr({ "style": "display: none" });
-            $("#roundend").attr({ "style": "display: initial" });
             if (this.id === theQuestions[theNumberToWordConversion[theCounter]].correctAnswer) {
                 $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse);
                 theCorrectAnswers++;
+                finishTheRound()
             } else {
-                $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
-                theWrongAnswers++;
+                handleWrongAnswerOrTimeout()
             };
-            theCounter++;
-            if (theCounter < Object.keys(theQuestions).length) {
-                setTimeout(function () {
-                    $("#gameplay").attr({ "style": "display: initial" });
-                    $("#roundend").attr({ "style": "display: none" });
-                    fillTheQuestionData()
-                }, 1500);
-            } else {
-                setTimeout(function () {
-                    $("#startscreen").attr({ "style": "display: none" });
-                    $("#gameplay").attr({ "style": "display: none" });
-                    $("#roundend").attr({ "style": "display: none" });
-                    $("#gameend").attr({ "style": "display: initial" });
-                    $("#gameend-display").text("The end! You got " + theCorrectAnswers + " correct and " + theWrongAnswers + " wrong.");
-                }, 500);
-            }
         }
     });
 
+    function handleWrongAnswerOrTimeout() {
+        $("#roundend-display").text(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
+        theWrongAnswers++;
+        finishTheRound()
+    }
+
+    function finishTheRound() {
+        $("img").remove();
+        $("#countdown-timer").html("&nbsp;");
+        $("#gameplay").attr({ "style": "display: none" });
+        $("#roundend").attr({ "style": "display: initial" });
+        theCounter++;
+        if (theCounter < Object.keys(theQuestions).length) {
+            setTimeout(function () {
+                $("#gameplay").attr({ "style": "display: initial" });
+                $("#roundend").attr({ "style": "display: none" });
+                fillTheQuestionData()
+                setCountDownTimer();
+            }, 1500);
+        } else {
+            setTimeout(function () {
+                $("#startscreen").attr({ "style": "display: none" });
+                $("#gameplay").attr({ "style": "display: none" });
+                $("#roundend").attr({ "style": "display: none" });
+                $("#gameend").attr({ "style": "display: initial" });
+                $("#gameend-display").text("The end! You got " + theCorrectAnswers + " correct and " + theWrongAnswers + " wrong.");
+            }, 500);
+        }
+    }
+
     function fillTheQuestionData() {
-        setCountDownTimer();
         let theString = "<img src=\"" + theQuestions[theNumberToWordConversion[theCounter]].questionImage + "\" style=\"position: absolute; top: -60px; left: -700px;\"\>";
         $(".carousel-caption").prepend(theString);
         $("img").animate({ "left": 700 }, 1500);
         $("#question-heading").text(theQuestions[theNumberToWordConversion[theCounter]].questionHeading);
         $("#question-text").text(theQuestions[theNumberToWordConversion[theCounter]].questionText);
-        // $("#question-text").text(theQuestions[theNumberToWordConversion[theCounter]].questionText);
         $("#heading-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1); // TODO: do headings?
         $("#answer-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1);
         $("#heading-2").text(theQuestions[theNumberToWordConversion[theCounter]].answer2); // TODO: do headings?
@@ -141,8 +153,9 @@ $(document).ready(function () {
             if (distance < 0) {
                 clearInterval(theCountdownInterval);
                 $("#countdown-timer").text("Time's up!");
+                handleWrongAnswerOrTimeout();
             }
-        }, 500);
+        }, 100);
     };
 
     function initializeGame() {
