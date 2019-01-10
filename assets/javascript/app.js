@@ -23,7 +23,7 @@ $(document).ready(function () {
             correctAnswer: "button-2",
             correctGetsResponse: "That's correct!",
             wrongGetsResponse: "A lousy guess! It was motorcycles.",
-            questionImage: ""
+            questionImage: "assets/images/DR650.png"
         },
         two: {
             questionText: "Similar to Honda, Suzuki Motor Corporation makes cars, motorcycles and power equipment. What made its founder, Michio Suzuki, famous first?",
@@ -32,8 +32,8 @@ $(document).ready(function () {
             answer3: "concrete mixers",
             correctAnswer: "button-1",
             correctGetsResponse: "How did you know that?!",
-            wrongGetsResponse: "No siree, it was weaving looms",
-            questionImage: ""
+            wrongGetsResponse: "No siree, it was weaving looms.",
+            questionImage: "assets/images/DR650.png"
         },
         three: {
             questionText: "The logo to be found on a Yamaha motorcycle consists of three tuning forks. This is because Yamaha Corporation originally did what?",
@@ -43,26 +43,26 @@ $(document).ready(function () {
             correctAnswer: "button-2",
             correctGetsResponse: "Aww yissss!",
             wrongGetsResponse: "Derp derp derp. Yamaha made pianos and reed organs long before it made motorcycles.",
-            questionImage: ""
+            questionImage: "assets/images/DR650.png"
         },
         four: {
-            questionText: "Honda is the world's largest manufacturer of what?",
+            questionText: "Honda Motor Company is the world's largest manufacturer of what?",
             answer1: "motorcycles",
             answer2: "internal combustion engines",
             answer3: "motorcycles and engines",
             correctAnswer: "button-3",
             correctGetsResponse: "Yeah, boi!",
             wrongGetsResponse: "Estupido! They're the largest manufacturers of both motorcycles and internal combustion engines.",
-            questionImage: ""
+            questionImage: "assets/images/DR650.png"
         },
         five: {
-            questionText: "Which company produced a car before the other company did?",
+            questionText: "Between Honda and Suzuki, which company produced a car before the other company did?",
             answer1: "Honda",
             answer2: "Suzuki",
             answer3: "They tied",
             correctAnswer: "button-2",
-            correctGetsResponse: "Boo-yeah! Suzuki's first came in 1955, Honda in 1963.",
-            wrongGetsResponse: "Ai chihuahua! Wrong-o, pal. Suzuki's first came in 1955, Honda in 1963.",
+            correctGetsResponse: "Boo-yeah! Suzuki's first car came out in 1955, Honda's in 1963.",
+            wrongGetsResponse: "Ai chihuahua! Wrong-o, pal. Suzuki's first car came out in 1955, Honda's in 1963.",
             questionImage: "assets/images/DR650.png"
         },
     }
@@ -132,7 +132,7 @@ $(document).ready(function () {
 
     function fillTheQuestionData() {
         let theString = "<img src=\"" + theQuestions[theNumberToWordConversion[theCounter]].questionImage + "\" style=\"position: absolute; left: -100vw\"\>";
-        $(".carousel-item").prepend(theString);
+        $(".question-background").prepend(theString);
         $("img").animate({ "left": "100vw" }, 4000);
         $("#question-text").text(theQuestions[theNumberToWordConversion[theCounter]].questionText);
         $("#button-1").text(theQuestions[theNumberToWordConversion[theCounter]].answer1);
