@@ -23,7 +23,7 @@ $(document).ready(function () {
             correctAnswer: "button-2",
             correctGetsResponse: "That's correct!",
             wrongGetsResponse: "A lousy guess! It was motorcycles.",
-            questionImage: "assets/images/DR650.png"
+            questionImage: ""
         },
         two: {
             questionText: "Similar to Honda, Suzuki Motor Corporation makes cars, motorcycles and power equipment. What made its founder, Michio Suzuki, famous first?",
@@ -43,7 +43,7 @@ $(document).ready(function () {
             correctAnswer: "button-2",
             correctGetsResponse: "Aww yissss!",
             wrongGetsResponse: "Derp derp derp. Yamaha made pianos and reed organs long before it made motorcycles.",
-            questionImage: "assets/images/DR650.png"
+            questionImage: ""
         },
         four: {
             questionText: "Honda Motor Company is the world's largest manufacturer of what?",
@@ -53,7 +53,7 @@ $(document).ready(function () {
             correctAnswer: "button-3",
             correctGetsResponse: "Yeah, boi!",
             wrongGetsResponse: "Estupido! They're the largest manufacturers of both motorcycles and internal combustion engines.",
-            questionImage: "assets/images/DR650.png"
+            questionImage: ""
         },
         five: {
             questionText: "Between Honda and Suzuki, which company produced a car before the other company did?",
@@ -63,7 +63,7 @@ $(document).ready(function () {
             correctAnswer: "button-2",
             correctGetsResponse: "Boo-yeah! Suzuki's first car came out in 1955, Honda's in 1963.",
             wrongGetsResponse: "Ai chihuahua! Wrong-o, pal. Suzuki's first car came out in 1955, Honda's in 1963.",
-            questionImage: "assets/images/DR650.png"
+            questionImage: "assets/images/Suzulight.png"
         },
     }
 
