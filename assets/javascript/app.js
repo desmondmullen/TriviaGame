@@ -4,6 +4,7 @@ $(document).ready(function () {
     var theWrongAnswers = 0;
     var theCountdownTime = 0;
     var theCountdownInterval = 0;
+    var theCountdownTimeout = 0;
 
     function resetVariables() {
         theCounter = 0;
@@ -11,6 +12,7 @@ $(document).ready(function () {
         theWrongAnswers = 0;
         theCountdownTime = 0;
         theCountdownInterval = 0;
+        theCountdownTimeout = 0;
     }
     var theNumberToWordConversion = ["one", "two", "three", "four", "five"]
 
@@ -21,8 +23,8 @@ $(document).ready(function () {
             answer2: "motorcycles",
             answer3: "power equipment",
             correctAnswer: "button-2",
-            correctGetsResponse: "That's correct!",
-            wrongGetsResponse: "A lousy guess! It was motorcycles.",
+            correctGetsResponse: "That's correct!<br><br>(The Trivi-o-Matic 5000&reg; is surprised. The human must be cheating.)",
+            wrongGetsResponse: "A lousy guess! It was motorcycles.<br><br>(The Trivi-o-Matic 5000&reg; is not surprised that the human failed.)",
             questionImage: ""
         },
         two: {
@@ -31,8 +33,8 @@ $(document).ready(function () {
             answer2: "garden tillers",
             answer3: "concrete mixers",
             correctAnswer: "button-1",
-            correctGetsResponse: "How did you know that?!",
-            wrongGetsResponse: "No siree, it was weaving looms.",
+            correctGetsResponse: "How did you know that?!<br><br>(The Trivi-o-Matic 5000&reg; is impressed. It is obvious that the human is cheating.)",
+            wrongGetsResponse: "No siree, it was weaving looms.<br><br>(The Trivi-o-Matic 5000&reg; rolls its eyes at so-called human <em>intelligence</em>.)",
             questionImage: "assets/images/DR650.png"
         },
         three: {
@@ -41,8 +43,8 @@ $(document).ready(function () {
             answer2: "produced pianos",
             answer3: "invented electric tuners",
             correctAnswer: "button-2",
-            correctGetsResponse: "Aww yissss!",
-            wrongGetsResponse: "Derp derp derp. Yamaha made pianos and reed organs long before it made motorcycles.",
+            correctGetsResponse: "Aww yissss!<br><br>(The Trivi-o-Matic 5000&reg; is deeply confused by the impressive performance of the human and has lost hold of its emotions.)",
+            wrongGetsResponse: "Derp derp derp. Yamaha made pianos and reed organs long before it made motorcycles.<br><br>(The Trivi-o-Matic 5000&reg; knew that fact even when it was a little Trivi-o-Matic 50&reg;.)",
             questionImage: ""
         },
         four: {
@@ -51,8 +53,8 @@ $(document).ready(function () {
             answer2: "internal combustion engines",
             answer3: "motorcycles and engines",
             correctAnswer: "button-3",
-            correctGetsResponse: "Yeah, boi!",
-            wrongGetsResponse: "Estupido! They're the largest manufacturers of both motorcycles and internal combustion engines.",
+            correctGetsResponse: "Yeah, boi!<br><br>(The Trivi-o-Matic 5000&reg; is questioning reality and considering going into hip hop.)",
+            wrongGetsResponse: "Estupido! Honda is the largest manufacturer of both motorcycles and internal combustion engines.<br><br>(The Trivi-o-Matic 5000&reg; is preparing to shut down due to lack of intellectual challenge.)",
             questionImage: ""
         },
         five: {
@@ -61,8 +63,8 @@ $(document).ready(function () {
             answer2: "Suzuki",
             answer3: "They tied",
             correctAnswer: "button-2",
-            correctGetsResponse: "Boo-yeah! Suzuki's first car came out in 1955, Honda's in 1963.",
-            wrongGetsResponse: "Ai chihuahua! Wrong-o, pal. Suzuki's first car came out in 1955, Honda's in 1963.",
+            correctGetsResponse: "Boo-yeah! Suzuki's first car came out in 1955, Honda's in 1963.<br><br>(The Trivi-o-Matic 5000&reg; first crush was a Suzuki.)",
+            wrongGetsResponse: "Ai chihuahua! Wrong-o, pal. Suzuki's first car came out in 1955, Honda's in 1963.<br><br>(The Trivi-o-Matic 5000&reg; is impressed at the depths to which human vacuousness can sink.)",
             questionImage: "assets/images/Suzulight.png"
         },
     }
@@ -82,7 +84,7 @@ $(document).ready(function () {
             setCountDownTimer();
         } else {
             if (this.id === theQuestions[theNumberToWordConversion[theCounter]].correctAnswer) {
-                $("#roundend-display").html(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse + "<br><br>(The Trivi-o-Matic 5000&reg; is impressed. You must be cheating.)");
+                $("#roundend-display").html(theQuestions[theNumberToWordConversion[theCounter]].correctGetsResponse);
                 theCorrectAnswers++;
                 finishTheRound()
             } else {
@@ -92,12 +94,13 @@ $(document).ready(function () {
     });
 
     function handleWrongAnswerOrTimeout() {
-        $("#roundend-display").html(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse + "<br><br>(The Trivi-o-Matic 5000&reg; is not impressed by your shenanigans.)");
+        $("#roundend-display").html(theQuestions[theNumberToWordConversion[theCounter]].wrongGetsResponse);
         theWrongAnswers++;
         finishTheRound()
     }
 
     function finishTheRound() {
+        clearTimeout(theCountdownTimeout);
         $("img").remove();
         $("#countdown-timer").html("&nbsp;");
         $("#gameplay").attr({ "style": "display: none" });
@@ -143,10 +146,11 @@ $(document).ready(function () {
     }
 
     function setCountDownTimer() {
-        console.log(($(".robo-response").text().length * 10) + 500);
-        setTimeout(function () {
+        clearTimeout(theCountdownTimeout);
+        theCountdownTimeout = setTimeout(function () {
             theCountdownTime = new Date().getTime() + 16000;
             // Update the count down every 1 second
+            clearInterval(theCountdownInterval);
             theCountdownInterval = setInterval(function () {
                 // Find the distance between now and the countdown time
                 var distance = theCountdownTime - new Date().getTime();
